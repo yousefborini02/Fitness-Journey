@@ -1,7 +1,16 @@
-# Fitness-Journey
-Fitness Journey is a web application designed to help users find nearby gyms based on their current location.
-Users can sign up for memberships, book training sessions, and read reviews and ratings of different gyms. The
-platform offers flexibility by allowing users to access gyms in various cities within the network, making it ideal
-for those who travel frequently or wish to explore different fitness centers.
+# Fitness Journey
 
-[Figma](https://www.figma.com/design/pBsjfscWbEe0n1CrrIPa7s/Untitled?node-id=0-1&t=vGbAqDic6JTf8mqM-0)
+Fitness Journey is a website designed for gym enthusiasts. With a membership, users can visit any gym listed on the platform. The project aims to provide a seamless and interactive experience for users to explore gyms, check their details, and manage their memberships.
+
+## Features
+
+- **Gym Catalog**: Browse through a catalog of gyms with detailed information.
+- **Gym Details**: View detailed information about each gym, including working hours, location, and contact details.
+- **Membership Management**: Manage your membership and access to various gyms.
+- **Responsive Design**: The website is fully responsive, providing an optimal experience on both desktop and mobile devices.
+- **Interactive UI**: Smooth animations and transitions for a better user experience.
+
+## Technologies Used
+
+- **React.js**: JavaScript library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
