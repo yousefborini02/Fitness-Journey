@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  background: linear-gradient(to bottom right, #000000, #171818);
+  background: black;
   color: white;
   font-family: "Inter", sans-serif;
   transition: 0.4s ease-in;

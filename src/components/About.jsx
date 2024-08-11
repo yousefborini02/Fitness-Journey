@@ -1,29 +1,35 @@
 import React from "react";
+import { useInView } from 'react-intersection-observer';
 import img from "../assets/img/about.png";
 
+
 const About = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false, 
+    threshold: 0.2,    
+  });
+
   return (
-    <div className=" min-h-screen flex flex-col md:flex-row items-center md:mx-32 mx-5">
+    <div
+      ref={ref}
+      className={`min-h-screen flex flex-col md:flex-row items-center md:mx-32 mx-5 transition-transform duration-700 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
+    >
       <div>
-        <h1 className="text-5xl font-semibold text-center md:text-start mt-14 md:mt-0">
+        <h1 className="text-4xl text-[#3CB347] font-semibold text-center md:text-start mt-14 md:mt-0">
           About Us
         </h1>
 
-        <div className=" w-full md:w-3/4 space-y-5 mt-4 text-2xl ">
+        <div className="w-full md:w-3/4 space-y-5 mt-8 text-2xl">
           <p>
-            Your well-being is your greatest wealth. Whether it's achieving
-            optimal health or enhancing your fitness journey, we're here to
-            support you every step of the way.
-            <p>
-              At our fitness center, our team of certified personal trainers,
-              attentive staff, and experienced management are dedicated to
-              fostering a nurturing environment.
-            </p>
+          Welcome to Fitness Journey, your ultimate destination for achieving your fitness goals and discovering the best gyms around you.
+          </p>
+          <p>
+          At Fitness Journey, we believe in providing our users with the freedom and flexibility to choose the perfect gym that fits their lifestyle and preferences.
           </p>
         </div>
       </div>
       <div>
-        <img src={img} className="rounded-lg" alt="img" />
+        <img src={img} className="rounded-lg" alt="About Us" />
       </div>
     </div>
   );

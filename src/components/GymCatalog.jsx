@@ -31,7 +31,7 @@ const GymCard = ({ gym }) => (
   >
     <img src={gym.image} alt={gym.name} className="h-40 w-full object-cover mb-4 rounded-t-lg" />
     <div className="flex items-center space-x-2 mb-4">
-      <span className="bg-[#3CB347] text-white text-sm px-1.5 py-0.5 rounded">9.2</span>
+      <span className="bg-[#3CB347] text-white text-sm px-1.5 py-0.5 rounded animate-pulse">9.2</span>
       <h3 className="text-xl mb-2 text-white mt-2">{gym.name}</h3>
     </div>
     <p className="text-gray-300 mb-4">{gym.description}</p>
@@ -120,7 +120,7 @@ const GymCatalog = () => {
                 initial="hidden"
                 animate="visible"
                 custom={rowIndex % 2 === 0 ? "left" : "right"}
-                transition={{ duration: 0.5, delay: rowIndex * 0.2 }}
+                transition={{ duration: 1, delay: rowIndex * 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {row.map((gym, index) => (

@@ -4,7 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Button from "../layouts/Button";
 import { Link } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 
+// Custom Arrow Component
 const CustomArrow = ({ className, style, onClick, direction }) => {
   const arrowPath = direction === "left"
     ? "M15.75 19.5L8.25 12l7.5-7.5"
@@ -18,7 +20,7 @@ const CustomArrow = ({ className, style, onClick, direction }) => {
         ...style,
         display: "block",
         background: "transparent",
-        color: "black",
+        // color: "white",
         zIndex: 1,
       }}
     >
@@ -37,6 +39,7 @@ const CustomArrow = ({ className, style, onClick, direction }) => {
   );
 };
 
+// GymCard Component
 const GymCard = ({ gym }) => {
   return (
     <div className="px-2">
@@ -54,19 +57,23 @@ const GymCard = ({ gym }) => {
             {gym.description}
           </p>
         </div>
-        <div className="p-6 pt-0">
+        <div className="p-6 pt-0 flex justify-center">
           <Link to="/gymdetails">
-          <Button title="View Details" />
+            <Button title="View Details" />
           </Link>
         </div>
-
       </div>
     </div>
   );
 };
 
+// GymsSlider Component
 const GymsSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2, 
+  });
 
   const gyms = [
     {
@@ -186,14 +193,22 @@ const GymsSlider = () => {
   };
 
   return (
-    <div className="bg-[#0000] h-[70vh] text-black relative">
-      <h1 className="text-4xl font-semibold text-center py-8 text-white">Gyms</h1>
+    <div
+      className={`bg-[#0000] h-[80vh] text-black relative transition-transform duration-700 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+      ref={ref}
+    >
+      <h1 className="text-4xl font-semibold text-center py-8 text-[#3CB347]">Gyms</h1>
       <div className="container mx-auto px-4 mb-8">
         <Slider {...settings} className="relative">
           {gyms.map((gym, index) => (
             <GymCard key={index} gym={gym} />
           ))}
         </Slider>
+        <div className="flex justify-center mt-8">
+          <Link to="/gymcatalog">
+          <Button title="See all gyms" />
+          </Link>
+        </div>
       </div>
     </div>
   );

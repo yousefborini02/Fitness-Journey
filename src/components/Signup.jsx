@@ -4,13 +4,19 @@ import 'tailwindcss/tailwind.css';
 // import 'boxicons/css/boxicons.min.css';
 
 const SignUp = () => {
+  // const [showPassword, setShowPassword] = useState(false);
+  // const [formValues, setFormValues] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: '',
+  //   confirmPassword: '',
+  // });
   const [showPassword, setShowPassword] = useState(false);
-  const [formValues, setFormValues] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,72 +29,37 @@ const SignUp = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}>
-      <div className=" bg-opacity-20 backdrop-blur-lg border-2 border-gray-300 shadow-lg rounded-lg p-12 w-full max-w-lg mx-4 lg:mx-0 relative">
-        <div className="absolute -top-0 left-1/2 transform -translate-x-1/2 bg-gray-300 px-8 py-2 rounded-b-2xl">
-          <span className="text-xl font-bold text-black">Sign Up</span>
+      <div className=" bg-opacity-20 backdrop-blur-lg border-2 border-white shadow-lg rounded-lg p-12 w-full max-w-lg mx-4 lg:mx-0 relative">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex items-center justify-center bg-[#3CB347] w-36 h-16 rounded-b-2xl">
+          <span className="text-2xl text-white">Sign Up</span>
         </div>
         <form action="#" method="post" encType="multipart/form-data" className="space-y-6 mt-12">
-          <div className="relative">
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formValues.username}
-              onChange={handleInputChange}
-              required
-              className="w-full h-14 bg-transparent text-white border-2 border-gray-300 rounded-full pl-10 pr-16 focus:outline-none"
-            />
-            <label htmlFor="username" className={`absolute left-10 top-0 text-gray-300 transform transition-all ${formValues.username ? '-translate-y-6 bg-gray-300 text-black px-2' : 'top-4'}`}>
+        <div className="relative flex flex-col my-6">
+            <input type="text" id="user" placeholder='Username' className="w-full h-14 text-lg bg-transparent text-white px-5 border-2 border-gray-300 rounded-2xl outline-none peer" required />
+            {/* <label htmlFor="user" className="absolute left-5 top-3 text-lg text-gray-400 transition-all duration-200 peer-focus:-top-4 peer-focus:text-sm peer-focus:bg-gray-300 peer-focus:px-1 peer-focus:rounded-md peer-focus:text-black">
               Username
-            </label>
-            <i className="bx bx-user text-xl absolute right-5 top-4 text-gray-300"></i>
+            </label> */}
+            <i className="bx bx-user absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl"></i>
           </div>
-          <div className="relative">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formValues.email}
-              onChange={handleInputChange}
-              required
-              className="w-full h-14 bg-transparent text-white border-2 border-gray-300 rounded-full pl-10 pr-16 focus:outline-none"
-            />
-            <label htmlFor="email" className={`absolute left-10 top-0 text-gray-300 transform transition-all ${formValues.email ? '-translate-y-6 bg-gray-300 text-black px-2' : 'top-4'}`}>
-              Email
-            </label>
+          <div className="relative flex flex-col my-6">
+            <input type="Email" id="user" placeholder='Email' className="w-full h-14 text-lg bg-transparent text-white px-5 border-2 border-gray-300 rounded-2xl outline-none peer" required />
+            {/* <label htmlFor="user" className="absolute left-5 top-3 text-lg text-gray-400 transition-all duration-200 peer-focus:-top-4 peer-focus:text-sm peer-focus:bg-gray-300 peer-focus:px-1 peer-focus:rounded-md peer-focus:text-black">
+              Username
+            </label> */}
+            {/* <i className="bx bx-user absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl"></i> */}
             <i className="bx bx-envelope text-xl absolute right-5 top-4 text-gray-300"></i>
           </div>
-          <div className="relative">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              name="password"
-              value={formValues.password}
-              onChange={handleInputChange}
-              required
-              className="w-full h-14 bg-transparent text-white border-2 border-gray-300 rounded-full pl-10 pr-16 focus:outline-none"
-            />
-            <label htmlFor="password" className={`absolute left-10 top-0 text-gray-300 transform transition-all ${formValues.password ? '-translate-y-6 bg-gray-300 text-black px-2' : 'top-4'}`}>
-              Password
-            </label>
-            <i className={`bx ${showPassword ? 'bx-show' : 'bx-hide'} text-xl absolute right-5 top-4 text-gray-300 cursor-pointer`} onClick={togglePasswordVisibility}></i>
-            <i className="bx bx-lock-alt text-xl absolute right-16 top-4 text-gray-300"></i>
+          <div className="relative flex flex-col my-6">
+            <input type={showPassword ? 'text' : 'password'} placeholder='Password' id="pass" className="w-full h-14 text-lg bg-transparent text-white px-5 border-2 border-gray-300 rounded-2xl outline-none peer" autoComplete="off" required />
+           
+            {/* <i className="bx bx-lock-alt absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl"></i> */}
+            {/* <i className={`bx ${showPassword ? 'bx-show' : 'bx-hide'} absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl cursor-pointer`} onClick={handleShowPassword}></i> */}
           </div>
-          <div className="relative">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formValues.confirmPassword}
-              onChange={handleInputChange}
-              required
-              className="w-full h-14 bg-transparent text-white border-2 border-gray-300 rounded-full pl-10 pr-16 focus:outline-none"
-            />
-            <label htmlFor="confirmPassword" className={`absolute left-10 top-0 text-gray-300 transform transition-all ${formValues.confirmPassword ? '-translate-y-6 bg-gray-300 text-black px-2' : 'top-4'}`}>
-              Confirm Password
-            </label>
-            <i className={`bx ${showPassword ? 'bx-show' : 'bx-hide'} text-xl absolute right-5 top-4 text-gray-300 cursor-pointer`} onClick={togglePasswordVisibility}></i>
-            <i className="bx bx-lock-alt text-xl absolute right-16 top-4 text-gray-300"></i>
+          <div className="relative flex flex-col my-6">
+            <input type={showPassword ? 'text' : 'password'} placeholder='Confirm Password' id="pass" className="w-full h-14 text-lg bg-transparent text-white px-5 border-2 border-gray-300 rounded-2xl outline-none peer" autoComplete="off" required />
+            
+            {/* <i className="bx bx-lock-alt absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl"></i> */}
+            {/* <i className={`bx ${showPassword ? 'bx-show' : 'bx-hide'} absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl cursor-pointer`} onClick={handleShowPassword}></i> */}
           </div>
           <div className="flex justify-between items-center text-white text-sm">
             <div className="flex items-center">
@@ -98,11 +69,11 @@ const SignUp = () => {
           </div>
           <div>
             <Link to="/login">
-            <input type="submit" value="Sign Up" className="w-full h-12 bg-gray-300 text-black rounded-full cursor-pointer hover:bg-white transition-all" />
+            <input type="submit" value="Sign Up" className="w-full h-12 bg-[#3CB347] text-white text-lg font-medium rounded-2xl cursor-pointer hover:bg-[#36973e] transition-all" />
             </Link>
           </div>
           <div className="text-center">
-            <span className="text-white">Already have an account? <Link to="/login" className="font-medium hover:underline">Login</Link></span>
+            <span className="text-white">Already have an account? <Link to="/login" className="text-[#3CB347] font-medium hover:underline">Login</Link></span>
           </div>
         </form>
       </div>

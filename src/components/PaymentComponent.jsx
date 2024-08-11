@@ -1,19 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar"; // Adjust the import path as needed
 import Footer from "./Footer"; // Adjust the import path as needed
 
 const PaymentComponent = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on mount
+    setAnimate(true);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <style>
+        {`
+          @keyframes slideInUp {
+            from {
+              opacity: 0;
+              transform: translateY(100%);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-slideInUp {
+            animation: slideInUp 1s ease-out;
+          }
+        `}
+      </style>
       <Navbar />
-      <div className="flex-grow flex items-center justify-center mt-32 mb-20"> {/* Adjusted top and bottom margin */}
-        <div className="max-w-5xl w-full bg-[#222] text-white rounded-lg shadow-lg p-8 transform transition-transform duration-500 hover:scale-105">
+      <div className="flex-grow flex items-center justify-center mt-32 mb-20">
+        <div
+          className={`max-w-5xl w-full bg-[#222] text-white rounded-lg shadow-lg p-8 transform transition-transform duration-500 hover:scale-105 ${
+            animate ? "animate-slideInUp" : ""
+          }`}
+        >
           <div className="flex flex-col md:flex-row md:justify-between space-y-8 md:space-y-0">
             {/* Complete Your Purchase Section */}
-            <div className="w-full md:w-2/3 animate-fadeIn">
-              <h2 className="text-2xl font-bold mb-6 text-center md:text-left">Complete Your Purchase</h2>
+            <div className="w-full md:w-2/3">
+              <h2 className="text-2xl text-[#3CB347] font-bold mb-6 text-center md:text-left">Complete Your Purchase</h2>
               <form className="space-y-6">
-                <div className="animate-slideInLeft">
+                <div className="animate-slideInUp">
                   <label className="block text-sm font-medium mb-1">Credit Card</label>
                   <input
                     type="text"
@@ -21,7 +49,7 @@ const PaymentComponent = () => {
                     placeholder="0000 0000 0000 0000"
                   />
                 </div>
-                <div className="animate-slideInRight">
+                <div className="animate-slideInUp">
                   <label className="block text-sm font-medium mb-1">Name on Card</label>
                   <input
                     type="text"
@@ -29,8 +57,8 @@ const PaymentComponent = () => {
                     placeholder="John Doe"
                   />
                 </div>
-                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 animate-fadeIn">
-                  <div className="w-full md:w-1/2">
+                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                  <div className="w-full md:w-1/2 animate-slideInUp">
                     <label className="block text-sm font-medium mb-1">Expiry Date</label>
                     <input
                       type="text"
@@ -38,7 +66,7 @@ const PaymentComponent = () => {
                       placeholder="MM / YY"
                     />
                   </div>
-                  <div className="w-full md:w-1/2">
+                  <div className="w-full md:w-1/2 animate-slideInUp">
                     <label className="block text-sm font-medium mb-1">CVV Code</label>
                     <input
                       type="text"
@@ -65,17 +93,17 @@ const PaymentComponent = () => {
             </div>
 
             {/* Your Trial Section */}
-            <div className="w-full md:w-1/3 mt-0 md:mt-0 md:ml-8 animate-fadeIn">
-              <h3 className="text-lg font-semibold mb-4 text-center md:text-left">Your Trial</h3>
+            <div className="w-full md:w-1/3 mt-0 md:mt-0 md:ml-8 animate-slideInUp">
+              <h3 className="text-lg text-[#3CB347] font-semibold mb-4 text-center md:text-left">Your Plan</h3>
               <div className="bg-[#333] p-4 rounded-lg shadow-md transform transition-transform duration-500 hover:scale-105">
-                <p className="text-sm mb-2">30 Day Free Trial</p>
-                <div className="flex justify-between items-center mb-2">
+                <p className="text-md mb-2">1 month Plan</p>
+                {/* <div className="flex justify-between items-center mb-2">
                   <span>Total Due Today</span>
                   <span className="font-bold">$0</span>
-                </div>
+                </div> */}
                 <div className="flex justify-between items-center">
-                  <span>After Trial</span>
-                  <span className="font-bold">$35.00</span>
+                  <span>Total price</span>
+                  <span className="font-bold">$40.00</span>
                 </div>
                 <a
                   href="#"

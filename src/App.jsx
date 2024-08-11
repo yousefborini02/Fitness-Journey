@@ -15,9 +15,7 @@ import PaymentComponent from "./components/PaymentComponent";
 import GymDashboard from "./components/GymDashboard";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
-// import AboutUs from "./components/AboutUs";
-// import Trainers from "./components/Trainers";
-// import Contact from "./components/Contact";
+import Profile from "./components/Profile";
 
 
 const App = () => {
@@ -26,7 +24,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -57,7 +55,7 @@ const App = () => {
                     <About />
                   </section>
 
-                  <section id="gymslider">
+                  <section id="gymslider" >
                     <GymsSlider />
                   </section>
 
@@ -88,7 +86,7 @@ const App = () => {
           <Route path="/gymdashboard" element={<GymDashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
